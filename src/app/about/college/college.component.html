@@ -1,0 +1,53 @@
+<main *ngIf="college && translations">
+    <section class="content-menu content-menu-border">
+        <div class="container header-block">
+            <div class="info-header mt-5 mt-lg-0">
+                <div class="logo-block ml-4 pl-3">
+                    <img src="/assets/favicon.ico" alt="icon"/>
+                </div>
+                <h1>{{ 'name'  | translate  }}</h1>
+            </div>
+            <div class="row">
+                <nav class="d-sm-flex">
+                    <ul class="no-wrap">
+                        <li>
+                            <a [routerLink]="['/about']" class="active">{{
+                                translations["About"]
+                                }}</a>
+                        </li>
+                        <li>
+                            <a [routerLink]="['/courses']">{{ translations["Courses"] }}</a>
+                        </li> 
+                        <li>
+                            <a [routerLink]="['/teachers']">{{ translations["Teachers"] }}</a>
+                        </li>
+                        <li>
+                            <a [routerLink]="['/contacts']">{{ translations["Contacts"] }}</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </section>
+    <section class="information pt-0">
+        <div class="container">
+            <div class="row ">
+                <div class="col-12 col-lg-12 description">
+                    <div [translate]="'about'" class="college-description"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+<main *ngIf="!college || !translations">
+    <section class="content-menu content-menu-border">
+        <div class="container header-block">
+            <div class="info-header mt-5 mt-lg-0">
+                <h1>Haven't data</h1>
+            </div>
+        </div>
+    </section>
+</main>
+<div *ngIf="isLoading">
+    <app-loader></app-loader>
+</div>
